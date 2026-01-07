@@ -21,7 +21,7 @@ mindmap
       "Raw Layer (Historian, PLC, DCS)"
       "Bronze: Event Logs, Trip Logs"
       "Silver: Time-Series Normalization"
-      "Gold: Risk Models, SIL(t) Curves"
+      "Gold: Risk Models and SIL(t) Curves"
       "Event Streams"
       "Anomaly Detection"
       "Drift Monitoring"
@@ -32,7 +32,7 @@ mindmap
     Analytics
       "Time-Series Modeling"
       "Failure Probability Curves"
-      "MTBF / MTTR Integration"
+      "MTBF and MTTR Integration"
       "Predictive Risk"
       "Degradation Forecasting"
       "Trip Correlation"

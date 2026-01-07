@@ -7,7 +7,7 @@ mindmap
     "No Time-Based Degradation"
     "Event-Independent Risk"
 
-    "SIL(t) Time-Banded Integrity"
+    "SIL(t) Time Banded Integrity"
     "Operational Drift"
     "Load-Based Degradation"
     "Environment Variability"

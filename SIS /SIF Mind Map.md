@@ -2,7 +2,6 @@
 mindmap
   root((Safety Instrumented System - SIS))
 
-    %% --- Static vs Dynamic ---
     Static_Model
       "IEC 61508 Assumptions"
       "Fixed SIL Classification"
@@ -18,23 +17,18 @@ mindmap
       "Sensor Aging"
       "Real-Time Risk Evolution"
 
-    %% --- Data Architecture ---
     Data_Architecture
-      Lakehouse
-        "Raw Layer (Historian, PLC, DCS)"
-        "Bronze: Event Logs, Trip Logs"
-        "Silver: Time-Series Normalization"
-        "Gold: Risk Models, SIL(t) Curves"
-      Real_Time
-        "Event Streams"
-        "Anomaly Detection"
-        "Drift Monitoring"
-      Governance
-        "Metadata"
-        "Lineage"
-        "Quality Rules"
+      "Raw Layer (Historian, PLC, DCS)"
+      "Bronze: Event Logs, Trip Logs"
+      "Silver: Time-Series Normalization"
+      "Gold: Risk Models, SIL(t) Curves"
+      "Event Streams"
+      "Anomaly Detection"
+      "Drift Monitoring"
+      "Metadata"
+      "Lineage"
+      "Quality Rules"
 
-    %% --- Analytics ---
     Analytics
       "Time-Series Modeling"
       "Failure Probability Curves"
@@ -43,7 +37,6 @@ mindmap
       "Degradation Forecasting"
       "Trip Correlation"
 
-    %% --- Standards Annex ---
     Standards_Annex
       "Correction to IEC 61508"
       "Time-Dependent SIL Requirements"
@@ -52,7 +45,6 @@ mindmap
       "Digital Twin Alignment"
       "Data-Driven Safety Proof"
 
-    %% --- Outputs ---
     Outputs
       "SIL(t) Dashboard"
       "Risk Heatmaps"

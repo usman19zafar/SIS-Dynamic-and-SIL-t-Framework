@@ -3,7 +3,7 @@ mindmap
   root((SIS_SILt_Framework))
 
     
-    Dynamic_Model
+Dynamic_Model
       SILt_Time_Banded_Integrity
       Operational_Drift
       Load_Based_Degradation
@@ -18,7 +18,7 @@ Static_Model
       No_Time_Based_Degradation
       Event_Independent_Risk
 
-    Analytics
+Analytics
       Time_Series_Modeling
       Failure_Probability_Curves
       MTBF_MTTR_Integration
@@ -26,7 +26,7 @@ Static_Model
       Degradation_Forecasting
       Trip_Correlation
 
-    Data_Architecture
+Data_Architecture
       Raw_Layer_Historian_PLC_DCS
       Bronze_Event_Logs_Trip_Logs
       Silver_Time_Series_Normalization
@@ -38,7 +38,7 @@ Static_Model
       Lineage
       Quality_Rules
 
-    Standards_Annex
+Standards_Annex
       Correction_to_IEC61508
       Time_Dependent_SIL_Requirements
       Continuous_Validation
@@ -46,7 +46,7 @@ Static_Model
       Digital_Twin_Alignment
       Data_Driven_Safety_Proof
 
-    Outputs
+Outputs
       SILt_Dashboard
       Risk_Heatmaps
       Degradation_Timelines

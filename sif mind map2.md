@@ -2,12 +2,7 @@
 mindmap
   root((SIS_SILt_Framework))
 
-    Static_Model
-      IEC61508_Assumptions
-      Fixed_SIL_Classification
-      No_Time_Based_Degradation
-      Event_Independent_Risk
-
+    
     Dynamic_Model
       SILt_Time_Banded_Integrity
       Operational_Drift
@@ -16,6 +11,20 @@ mindmap
       Maintenance_Gaps
       Sensor_Aging
       Real_Time_Risk_Evolution
+
+Static_Model
+      IEC61508_Assumptions
+      Fixed_SIL_Classification
+      No_Time_Based_Degradation
+      Event_Independent_Risk
+
+    Analytics
+      Time_Series_Modeling
+      Failure_Probability_Curves
+      MTBF_MTTR_Integration
+      Predictive_Risk
+      Degradation_Forecasting
+      Trip_Correlation
 
     Data_Architecture
       Raw_Layer_Historian_PLC_DCS
@@ -28,14 +37,6 @@ mindmap
       Metadata
       Lineage
       Quality_Rules
-
-    Analytics
-      Time_Series_Modeling
-      Failure_Probability_Curves
-      MTBF_MTTR_Integration
-      Predictive_Risk
-      Degradation_Forecasting
-      Trip_Correlation
 
     Standards_Annex
       Correction_to_IEC61508

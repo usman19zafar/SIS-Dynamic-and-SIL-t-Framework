@@ -2,7 +2,7 @@ Three‑Layer Safety‑Bounded Reliability Framework (3LSBR)
 A Unified Architecture for Managing Aging Assets, Degradation, and Catastrophic Risk
 
 1. Introduction
-Large industrial assets degrade every day — even when idle.
+Large industrial assets' functional safety systems degrade every day — even when idle.
 Time, chemistry, physics, and environment continuously push equipment toward failure.
 
 Traditional reliability modeling becomes unmanageable when:
@@ -36,52 +36,6 @@ ________________________________________________________________________________
 Principle
 The mission age of a set is limited by the weakest component.
 
-Formula
-Let devices be 
-𝑖
-=
-1
-,
-2
-,
-3
- with design lives 
-𝐿
-𝑖
-:
-
-𝐿
-min
-⁡
-=
-min
-⁡
-(
-𝐿
-1
-,
-𝐿
-2
-,
-𝐿
-3
-)
-Choose safety factor 
-0
-<
-𝛼
-≤
-1
-:
-
-𝑇
-set
-=
-𝛼
-⋅
-𝐿
-min
-⁡
 ASCII Table — Example
 ```Code
 +-----------+--------------+------------------+
@@ -110,17 +64,8 @@ P (Potential Failure): first detectable sign
 F (Functional Failure): loss of required function
 ```
 
-ΔPF: time between P and F
+ΔPF: time between P and F --> All formulas are given in the end!
 
-Δ
-𝑃
-𝐹
-=
-𝑡
-𝐹
-−
-𝑡
-𝑃
 Inspection Rule
 Inspection interval 
 𝜏
@@ -171,20 +116,6 @@ Losing visibility = operating blind.
 
 ______________________________________________________________________________________________________________________________________________________________________________________________________________________
 5. Rule 3 — Catastrophic‑Risk Bias
-Expected Loss
-𝐸
-[
-𝐶
-acc
-]
-=
-𝑝
-𝑓
-⋅
-𝐶
-acc
-Where:
-
 𝑝
 𝑓
  = probability of dangerous failure
@@ -194,29 +125,7 @@ acc
  = cost of catastrophic event
 
 Total Expected Cost
-𝐸
-[
-𝐶
-total
-]
-=
-𝑝
-𝑓
-⋅
-𝐶
-acc
-+
-𝐶
-rep
-+
-𝐶
-down
-Because 
-𝐶
-acc
  is huge, even small increases in 
-𝑝
-𝑓
  are unacceptable.
 
 ASCII Table — Cost Logic
@@ -234,62 +143,15 @@ ASCII Table — Cost Logic
 
 6. Integrated Mathematical Model
 Step 1 — Set Mission Age
-𝑇
-set
-=
-𝛼
-⋅
-𝐿
-min
 ⁡
 Step 2 — Effective Failure Probability
 For each mechanism:
 
-𝑝
-𝑓
-,
-mech
-=
-𝑝
-deg
-⋅
-𝑃
-miss
-Total:
-
-𝑝
-𝑓
-=
-∑
-mech
-𝑝
-𝑓
-,
-mech
 Step 3 — Plant-Level Reliability
-If there are 
-𝑁
- sets:
 
-𝑝
-plant
-=
-1
-−
-(
-1
-−
-𝑝
-𝑓
-)
-𝑁
 Step 4 — Risk Constraint
-𝑝
-plant
-≤
-𝑝
-target
 
+______________________________________________________________________________________________________________________________________________________________________________________________________________________
 7. Why Big Assets “Die” Even When Idle
 ```Code
 +----------------------+-------------------------------+
@@ -308,6 +170,7 @@ Idle = slow death.
 This is why Rule 1 and Rule 2 are essential.
 ```
 
+______________________________________________________________________________________________________________________________________________________________________________________________________________________
 8. Executive Summary (Copy‑Paste for Management)
 Code
 Our assets degrade every day, even when idle. 
@@ -315,6 +178,7 @@ If we relax safety margins (Rule 3), we must preserve early detection (Rule 2).
 If Rule 2 fails even once, we face a catastrophic event. 
 This framework ensures we never operate blind.
 
+______________________________________________________________________________________________________________________________________________________________________________________________________________________
 9. Recommended GitHub Repo Structure
 
 ```Code
@@ -338,4 +202,152 @@ This framework ensures we never operate blind.
     ├── rule_hierarchy_ascii.txt
     └── degradation_ascii.txt
 ```
+______________________________________________________________________________________________________________________________________________________________________________________________________________________
 
+============================================
+ASCII FORMULAS FOR THE 3‑LAYER FRAMEWORK
+============================================
+Below is the complete set of formulas we developed, expressed only in ASCII.
+
+--------------------------------------------
+1. AGE BOUNDING (RULE 1)
+--------------------------------------------
+Weakest design life:
+
+```Code
+L_min = min(L1, L2, L3, ... Ln)
+Mission age with safety factor:
+
+T_set = alpha * L_min
+Where:
+
+0 < alpha <= 1
+```
+--------------------------------------------
+2. P–F DETECTION (RULE 2)
+--------------------------------------------
+
+P–F interval:
+
+```Code
+Delta_PF = t_F - t_P
+Inspection interval requirement:
+
+tau < Delta_PF
+Number of inspections in P–F window:
+
+n = floor(Delta_PF / tau)
+Probability of missing degradation:
+
+P_miss = (1 - p_d)^n
+Effective dangerous failure probability for a mechanism:
+
+p_f_mech = p_deg * P_miss
+Total dangerous failure probability for the set:
+
+p_f = sum(p_f_mech for all mechanisms)
+```
+
+--------------------------------------------
+3. CATASTROPHIC RISK (RULE 3)
+--------------------------------------------
+Expected catastrophic loss:
+
+```Code
+E_C_acc = p_f * C_acc
+Total expected cost:
+
+E_C_total = (p_f * C_acc) + C_rep + C_down
+Risk constraint:
+
+p_f <= p_target
+```
+
+--------------------------------------------
+4. PLANT‑LEVEL RELIABILITY
+--------------------------------------------
+If there are N identical sets:
+
+```Code
+p_plant = 1 - (1 - p_f)^N
+Plant risk constraint:
+
+p_plant <= p_target
+```
+--------------------------------------------
+5. RELIABILITY OF A SET (GENERIC)
+--------------------------------------------
+
+For a 2oo3 architecture:
+
+```Code
+R_set(t) = R1(t)*R2(t) + R1(t)*R3(t) + R2(t)*R3(t) - 2*R1(t)*R2(t)*R3(t)
+For a 1oo2 architecture:
+
+R_set(t) = 1 - (1 - R1(t)) * (1 - R2(t))
+For a 1oo1 architecture:
+
+R_set(t) = R1(t)
+For a 2oo2 architecture:
+
+R_set(t) = R1(t) * R2(t)
+```
+--------------------------------------------
+6. WEIBULL-BASED RELIABILITY (OPTIONAL)
+--------------------------------------------
+Weibull reliability function:
+
+```Code
+R(t) = exp( - (t / eta)^beta )
+Weibull failure density:
+
+f(t) = (beta / eta) * (t / eta)^(beta - 1) * exp( - (t / eta)^beta )
+Weibull hazard rate:
+
+h(t) = (beta / eta) * (t / eta)^(beta - 1)
+```
+--------------------------------------------
+7. INSPECTION OPTIMIZATION
+--------------------------------------------
+Choose tau to satisfy:
+
+```Code
+tau <= Delta_PF / k
+Where:
+
+k = desired number of inspections in PF window
+Example:
+
+k = 2  -->  tau <= Delta_PF / 2
+k = 3  -->  tau <= Delta_PF / 3
+```
+--------------------------------------------
+8. ECONOMIC DECISION LOGIC
+--------------------------------------------
+If relaxing Rule 3:
+
+```Code
+Do NOT relax Rule 2
+If economics force extension of T_set:
+
+Increase inspection frequency (reduce tau)
+Increase detection probability (increase p_d)
+Reduce P_miss
+```
+--------------------------------------------
+9. IDLE DEGRADATION MODEL (OPTIONAL)
+--------------------------------------------
+Idle degradation rate:
+
+```Code
+D_idle = D_time + D_env + D_material
+Total degradation:
+
+D_total = D_operating + D_idle
+Failure threshold:
+
+If D_total >= D_critical --> Failure
+```
+============================================
+END OF ASCII FORMULAS
+============================================
